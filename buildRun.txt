@@ -1,0 +1,24 @@
+/Users/critoma/Downloads/quantum/quantumjava
+
+mvn clean compile
+
+Vs
+
+
+mvn clean javafx:run
+
+
+
+javac -cp .:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch07/add2/Main.java
+
+
+java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" org.redfx.javaqc.ch07.add2.Main
+
+
+
+java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" org.redfx.javaqc.ch09.reversiblex.Main
+
+
+
+
+java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" --module-path /Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib --add-modules=javafx.controls,javafx.fxml org.redfx.strangefx.ui.Main

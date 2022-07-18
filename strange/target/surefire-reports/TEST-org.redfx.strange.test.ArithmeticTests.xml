@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.redfx.strange.test.ArithmeticTests" time="0.134" tests="53" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/critoma/Downloads/quantumjava/strange/target/test-classes:/Users/critoma/Downloads/quantumjava/strange/target/classes:/Users/critoma/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/Users/critoma/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/critoma/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/critoma/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/Users/critoma/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar:/Users/critoma/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/Users/critoma/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RO"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/critoma/Downloads/quantumjava/strange/target/surefire/surefirebooter4472499325178902891.jar /Users/critoma/Downloads/quantumjava/strange/target/surefire 2022-07-15T16-51-39_011-jvmRun1 surefire4875831399148903015tmp surefire_012819682714917734032tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/critoma/Downloads/quantumjava/strange/target/test-classes:/Users/critoma/Downloads/quantumjava/strange/target/classes:/Users/critoma/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/Users/critoma/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/critoma/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/critoma/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/Users/critoma/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar:/Users/critoma/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/Users/critoma/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/critoma"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2022-01-18"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/critoma/Downloads/quantumjava/strange"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/critoma/Downloads/quantumjava/strange/target/surefire/surefirebooter4472499325178902891.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.2+8-86"/>
+    <property name="user.name" value="critoma"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="12.0.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/critoma/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/z9/n9th79ms43q_v61frw0bzh_c0000gn/T/"/>
+    <property name="java.version" value="17.0.2"/>
+    <property name="user.dir" value="/Users/critoma/Downloads/quantumjava/strange"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/critoma/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.2+8-86"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="addmod2p2mod3" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="addmodpart2" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="multiply5x3andswap" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="multiplyModGate5x3mod6" classname="org.redfx.strange.test.ArithmeticTests" time="0.01"/>
+  <testcase name="add010" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="addmod11num4" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="expmul" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="add0num0" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add0num1" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add1num0" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add1num1" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add5num2" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="add5num4" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="invinverseAndinverse" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="addmodp0" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="addmod0" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="addmod1" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="addmod2" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="addmod3" classname="org.redfx.strange.test.ArithmeticTests" time="0.004"/>
+  <testcase name="addmod4" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="addmod5" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="adjoint" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="minus1" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="minus2" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add5num2p" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="multiplyModGate5x3mod6p" classname="org.redfx.strange.test.ArithmeticTests" time="0.017"/>
+  <testcase name="gcd" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="inverseAndinvinverse" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="controlledAdd001" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="controlledAdd100" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="controlledAdd101" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="controlledAdd110" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="controlledAdd111" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add00" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add01" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add10" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add11" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="add61" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="addmod2p2mod3step1" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="addmod2p2mod3step2" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="addmod2p2mod3step3" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="mul01" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="mul11" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="mul13" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="mul55" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="multiplyMod5x3andswapandcleans1" classname="org.redfx.strange.test.ArithmeticTests" time="0.028"/>
+  <testcase name="multiplyMod5x3andswapandcleans2" classname="org.redfx.strange.test.ArithmeticTests" time="0.033"/>
+  <testcase name="multiply5x3" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="multiply5x7" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+  <testcase name="addmod1plus1mod3" classname="org.redfx.strange.test.ArithmeticTests" time="0.002"/>
+  <testcase name="multiply5x3andswapandclean" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="addmodgate" classname="org.redfx.strange.test.ArithmeticTests" time="0.001"/>
+  <testcase name="getInverseModulus" classname="org.redfx.strange.test.ArithmeticTests" time="0"/>
+</testsuite>

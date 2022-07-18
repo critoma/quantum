@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.redfx.strangefx.reder.RenderTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.168 s - in org.redfx.strangefx.reder.RenderTests
