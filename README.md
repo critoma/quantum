@@ -22,6 +22,7 @@ https://github.com/redfx-quantum/strangefx
 @ https://www.manning.com/books/quantum-computing-in-action
 
 In addition for the mathematics and quantum mechanics please take into account the following:
+
 'Dancing with Qubits' by Robert S. Sutor, Packt, November 2021, ISBN 9781838827366
 @ https://www.packtpub.com/product/dancing-with-qubits/9781838827366
 
