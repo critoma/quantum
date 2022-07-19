@@ -26,7 +26,7 @@ https://github.com/redfx-quantum/strangefx
 
 - 'Programming Quantum Computers: Essential Algorithms and Code Samples' by Eric R. Johnston, Nic Harrigan, Mercedes Gimeno-Segovia, O'Reilly Publishing, July 2019, ISBN-13: 978-1492039686 | ISBN-10: 1492039683 
 
-@ https://learning.oreilly.com/library/view/programming-quantum-computers/9781492039679/ | https://oreilly-qc.github.io/?p=2-4# | https://github.com/oreilly-qc/oreilly-qc.github.io/tree/master/samples | https://oreilly-qc.github.io/samples/Qiskit/
+@ https://learning.oreilly.com/library/view/programming-quantum-computers/9781492039679/ | https://oreilly-qc.github.io/?p=2-4# | https://github.com/oreilly-qc/oreilly-qc.github.io | https://github.com/oreilly-qc/oreilly-qc.github.io/tree/master/samples | https://oreilly-qc.github.io/samples/Qiskit/
 
 In addition for the mathematics, quantum mechanics and some additional coding please take into account the following:
 
