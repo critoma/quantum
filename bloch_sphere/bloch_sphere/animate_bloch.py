@@ -1,0 +1,465 @@
+#!/usr/bin/env python3
+
+from typing import Any, Dict, List
+
+import dataclasses
+import argparse
+import re
+import sys
+import numpy as np
+
+import drawSvg as draw  # pip install drawSvg
+from hyperbolic import euclid3d  # pip install hyperbolic
+from hyperbolic.euclid import shapes, intersection
+
+
+@dataclasses.dataclass
+class AnimState:
+    anim: draw.Animation
+    fps: float = 20
+    speed: float = 1
+    inner_proj: euclid3d.Projection = euclid3d.identity(3)
+    inner_opacity: float = 1
+    extra_opacity: float = 0
+    label: str = None
+    axis: List[float] = None
+    draw_args: Dict[str, Any] = dataclasses.field(default_factory=dict)
+
+    @classmethod
+    def _interpolate(cls, x):
+        return (np.sin(x * np.pi + -np.pi/2) + 1)/2
+    def _smooth(self, duration):
+        x = np.linspace(0, 1, int(round(self.fps*duration)))
+        y = self._interpolate(x)
+        return y
+    def _wait(self, duration):
+        return range(int(round(self.fps*duration)))
+
+    def _draw_frame(self):
+        self.anim.draw_frame(self.inner_proj, label=self.label,
+                             inner_opacity=self.inner_opacity,
+                             extra_opacity=self.extra_opacity,
+                             axis=self.axis,
+                             idPrefix='{}-d'.format(len(self.anim.frames)),
+                             **self.draw_args)
+
+    def sphere_fade_in(self):
+        for t in self._smooth(0.4):
+            self.inner_opacity = t
+            self._draw_frame()
+        self.inner_opacity = 1
+
+    def sphere_fade_out(self):
+        for t in self._smooth(0.4):
+            self.inner_opacity = 1-t
+            self._draw_frame()
+        self.inner_opacity = 0
+
+    def fade_in(self, label, axis):
+        assert self.extra_opacity == 0, 'Unexpected previous state'
+        self.label = label
+        self.axis = axis
+        for t in self._smooth(0.4):
+            self.extra_opacity = t
+            self._draw_frame()
+        self.extra_opacity = 1
+
+    def fade_out(self):
+        assert self.extra_opacity == 1, 'Unexpected previous state'
+        for t in self._smooth(0.4):
+            self.extra_opacity = 1-t
+            self._draw_frame()
+        self.extra_opacity = 0
+
+    def rotate(self, rads):
+        start = self.inner_proj
+        for t in self._smooth(2):
+            self.inner_proj = euclid3d.rotation3d(self.axis, rads*t) @ start
+            self._draw_frame()
+        self.inner_proj = euclid3d.rotation3d(self.axis, rads) @ start
+
+    def wait(self, duration=1):
+        for i in self._wait(duration):
+            self._draw_frame()
+
+    def i_gate(self):
+        self.wait(2.8)
+
+    def do_gate(self, label, axis, radians):
+        self.fade_in(label, axis)
+        self.rotate(radians)
+        self.fade_out()
+
+    def h_gate(self):
+        self.do_gate('H Gate:', (1, 0, 1), np.pi)
+    def x_gate(self):
+        self.do_gate('X Gate:', (1, 0, 0), np.pi)
+    def y_gate(self):
+        self.do_gate('Y Gate:', (0, 1, 0), np.pi)
+    def z_gate(self):
+        self.do_gate('Z Gate:', (0, 0, 1), np.pi)
+    def sqrt_x_gate(self):
+        self.do_gate('√X Gate:', (1, 0, 0), np.pi/2)
+    def sqrt_y_gate(self):
+        self.do_gate('√Y Gate:', (0, 1, 0), np.pi/2)
+    def s_gate(self):
+        self.do_gate('S Gate:', (0, 0, 1), np.pi/2)
+    def t_gate(self):
+        self.do_gate('T Gate:', (0, 0, 1), np.pi/4)
+    def inv_h_gate(self):
+        self.do_gate('H⁻¹ Gate:', (1, 0, 1), -np.pi)
+    def inv_x_gate(self):
+        self.do_gate('X⁻¹ Gate:', (1, 0, 0), -np.pi)
+    def inv_y_gate(self):
+        self.do_gate('Y⁻¹ Gate:', (0, 1, 0), -np.pi)
+    def inv_z_gate(self):
+        self.do_gate('Z⁻¹ Gate:', (0, 0, 1), -np.pi)
+    def inv_sqrt_x_gate(self):
+        self.do_gate('√X⁻¹ Gate:', (1, 0, 0), -np.pi/2)
+    def inv_sqrt_y_gate(self):
+        self.do_gate('√Y⁻¹ Gate:', (0, 1, 0), -np.pi/2)
+    def inv_s_gate(self):
+        self.do_gate('S⁻¹ Gate:', (0, 0, 1), -np.pi/2)
+    def inv_t_gate(self):
+        self.do_gate('T⁻¹ Gate:', (0, 0, 1), -np.pi/4)
+    def custom_gate(self, x, y, z, r_pi=1, label=None):
+        x = float(x)
+        y = float(y)
+        z = float(z)
+        r_pi = float(r_pi)
+        if label is None:
+            label = f'{r_pi:.3f}π about ({x:.3f}, {y:.3f}, {z:.3f})'
+        self.do_gate(label, (x, y, z), np.pi*r_pi)
+
+    def apply_gate_list(self, gates, final_wait=True):
+        non_gates = {'wait', 'no_wait'}
+        block_gates = {'do'}
+        no_wait = False
+        for gate in gates:
+            if gate.startswith('custom,') or gate.startswith('custom;'):
+                try:
+                    self.custom_gate(*gate[7:].split(gate[6]))
+                except ValueError:
+                    print(f'Error: Custom gate arguments contain invalid '
+                          f'floats {gate}.')
+                    sys.exit(1)
+                    return
+                continue
+
+            if re.match('r[x,y,z][,;]', gate[:3].lower()):
+                try:
+                    r_pi = float(gate[3:])
+                except ValueError:
+                    print('Error: Rx/Ry/Rz gate should have style like '
+                          'Rx;{float} or Rx,{float}.')
+                    sys.exit(1)
+                    return
+                gate_name = 'R' + gate[1].lower()  # Display Rx instead of rx
+                x = int(gate_name[1] == 'x')
+                y = int(gate_name[1] == 'y')
+                z = int(gate_name[1] == 'z')
+                formated_r_pi = f"{r_pi:.3f}".rstrip('0').rstrip('.')
+                label = f"{gate_name}({formated_r_pi}π)"
+                self.custom_gate(x, y, z, r_pi, label=label)
+                continue
+
+            gate = gate.replace('-', '_')
+            if gate in block_gates:
+                print(f'Error: Invalid gate name "{gate}".')
+                sys.exit(1)
+                return
+            if gate == 'no_wait':
+                no_wait = True
+            elif gate in non_gates:
+                getattr(self, gate)()
+            else:
+                method = getattr(self, gate+'_gate', None)
+                if method is not None:
+                    method()
+                else:
+                    print(f'Error: Unknown gate name "{gate}".')
+                    sys.exit(1)
+                    return
+        if not no_wait and final_wait:
+            self.wait()
+
+def do_or_save_animation(name: str, save=False, fps=20, preview=True,
+                         style='sphere'):
+    def wrapper(func):
+        if save == 'mp4':
+            with draw.animate_video(f'{name}.mp4', draw_frame, fps=fps,
+                                    jupyter=preview,
+                                   ) as anim:
+                state = AnimState(anim, fps=fps, draw_args={"style": style})
+                func(state)
+        elif save == 'gif' or save is True:
+            with draw.animate_video(f'{name}.gif', draw_frame, duration=1/fps,
+                                    jupyter=preview,
+                                   ) as anim:
+                state = AnimState(anim, fps=fps, draw_args={"style": style})
+                func(state)
+        else:
+            with draw.animate_jupyter(draw_frame, delay=1/fps) as anim:
+                state = AnimState(anim, fps=fps, draw_args={"style": style})
+                func(state)
+        return func
+    return wrapper
+
+def draw_frame(*args, background='white', idPrefix='d', w=624, h=None,
+               **kwargs):
+    d = draw.Drawing(5, 3, origin='center', idPrefix=idPrefix)
+    d.setRenderSize(w=w, h=h)
+    if background:
+        d.append(draw.Rectangle(-100, -100, 200, 200, fill=background))
+
+    g = draw.Group()
+    draw_bloch_sphere(g, background=None, *args, **kwargs)
+    d.append(g)
+    return d
+
+def draw_bloch_sphere(d, inner_proj=euclid3d.identity(3), label='', axis=None,
+                      rot_proj=None, rot_deg=180,
+                      outer_labels=(), inner_labels=(),
+                      extra_opacity=1, inner_opacity=1, background='white',
+                      style='sphere'):
+    spin = euclid3d.rotation(3, 0, 2, 2*np.pi/16/2*1.001)
+    tilt = euclid3d.rotation(3, 1, 2, np.pi/8)
+    trans = tilt @ spin @ euclid3d.axis_swap((1, 2, 0))
+    proj = euclid3d.perspective3d(np.pi/8, view_size=4) @ trans
+    zx = euclid3d.axis_swap((2, 0, 1))
+    xy = euclid3d.identity(3)
+    yz = euclid3d.axis_swap((1, 2, 0))
+    proj_zx = proj @ zx
+    proj_xy = proj @ xy
+    proj_yz = proj @ yz
+
+    if background:
+        d.append(draw.Rectangle(-100, -100, 200, 200, fill=background))
+
+    def draw_band(proj, trans, r_outer=1, r_inner=0.9, color='black', z_mul=1,
+                  opacity=1, divs=4, d=d, **kwargs):
+        color = ((color * divs)[:divs] if isinstance(color, list)
+                                       else [color] * divs)
+        points = np.array([[-1, -1, 1, 1], [-1, 1, 1, -1]]).T
+        sqr12 = 0.5**0.5
+        overlap = np.pi/500 * (divs != 4)
+        start_end_points = [
+            np.array([[np.cos(pr-2*np.pi/divs-overlap),
+                       np.sin(pr-2*np.pi/divs-overlap)],
+                      [np.cos(pr+overlap),  np.sin(pr+overlap)],
+                      [np.cos(pr-np.pi/divs), np.sin(pr-np.pi/divs)]])
+            for pr in np.linspace(0, 2*np.pi, num=divs, endpoint=False)
+        ]
+        for i in range(divs):
+            p = draw.Path(fill=color[i], stroke='none', stroke_width=0.002,
+                          **kwargs, opacity=opacity)
+            z = trans.project_point(
+                (r_inner+r_outer)/2*start_end_points[i][2])[2]
+            e = shapes.EllipseArc.fromBoundingQuad(
+                *proj.project_list(points*r_outer)[:, :2].flatten(),
+                *proj.project_list(start_end_points[i]*r_outer
+                                  )[:, :2].flatten(),
+            )
+            if e: e.drawToPath(p)
+            if r_inner > 0:
+                e = shapes.EllipseArc.fromBoundingQuad(
+                    *proj.project_list(points*r_inner)[:, :2].flatten(),
+                    *proj.project_list(start_end_points[i]*r_inner
+                                      )[:, :2].flatten(),
+                )
+                if e:
+                    e.reversed().drawToPath(p, includeL=True)
+            p.Z()
+            d.append(p, z=z*z_mul)
+            if False:
+                d.draw(shapes.EllipseArc.fromBoundingQuad(
+                    *proj.project_list((r_outer+r_inner)/2*points
+                                      )[:, :2].flatten(),
+                    *proj.project_list((r_outer+r_inner)/2*start_end_points[i]
+                                      )[:, :2].flatten(),
+                ), fill='none', stroke_width=0.02, stroke=color[i], **kwargs,
+                z=z*z_mul)
+
+    xycolors = ['#56e', '#239', '#56e', '#56e']
+    yzcolors = ['#e1e144', '#909022', '#e1e144', '#e1e144']
+    zxcolors = ['#9e2', '#6a1', '#9e2', '#9e2']
+
+    draw_band(proj_xy, trans@xy, 1, 0.925, z_mul=10, color=xycolors)
+    draw_band(proj_yz, trans@yz, 1, 0.925, z_mul=10, color=yzcolors)
+    draw_band(proj_zx, trans@zx, 1, 0.925, z_mul=10, color=zxcolors)
+
+    # Inner
+    g = draw.Group(opacity=inner_opacity)
+    z_center = trans.project_point((0,0,0))[2]
+    d.append(g, z=z_center)
+    inner_xy = proj@inner_proj@xy
+
+    if style == 'arrows':
+        # Draw arrowed axis. (Positive half only)
+        arrow = draw.Marker(-0.1, -0.5, 0.9, 0.5, scale=4, orient='auto')
+        arrow.append(draw.Lines(-0.1, -0.5, -0.1, 0.5, 0.9, 0, fill='#9e2',
+                                close=True))
+        g.append(draw.Line(*inner_xy.p2(0, 0, 0), *inner_xy.p2(0.6, 0, 0),
+                        stroke='#9e2', stroke_width=0.035, marker_end=arrow),
+                z=z_center)
+        arrow = draw.Marker(-0.1, -0.5, 0.9, 0.5, scale=4, orient='auto')
+        arrow.append(draw.Lines(-0.1, -0.5, -0.1, 0.5, 0.9, 0, fill='#e1e144',
+                                close=True))
+        g.append(draw.Line(*inner_xy.p2(0, 0, 0), *inner_xy.p2(0, 0.6, 0),
+                        stroke='#e1e144', stroke_width=0.035, marker_end=arrow),
+                z=z_center)
+        arrow = draw.Marker(-0.1, -0.5, 0.9, 0.5, scale=4, orient='auto')
+        arrow.append(draw.Lines(-0.1, -0.5, -0.1, 0.5, 0.9, 0, fill='#56e',
+                                close=True))
+        g.append(draw.Line(*inner_xy.p2(0, 0, 0), *inner_xy.p2(0, 0, 0.6),
+                        stroke='#56e', stroke_width=0.035, marker_end=arrow),
+                z=z_center)
+    else:
+        # Draw inner bands
+        # Darker colors: #34b, #a8a833, #7b2
+        draw_band(proj@inner_proj@xy, trans@inner_proj@xy, 0.8, 0.7,
+                  color=xycolors, d=g)
+        draw_band(proj@inner_proj@yz, trans@inner_proj@yz, 0.8, 0.7,
+                  color=yzcolors, divs=4, d=g)
+        draw_band(proj@inner_proj@zx, trans@inner_proj@zx, 0.8, 0.7,
+                  color=zxcolors, divs=8//2, d=g)
+        arrow = draw.Marker(-0.1, -0.5, 0.9, 0.5, scale=4, orient='auto')
+        arrow.append(draw.Lines(-0.1, -0.5, -0.1, 0.5, 0.9, 0, fill='black',
+                                close=True))
+        g.append(draw.Line(*inner_xy.p2(-0.65, 0, 0), *inner_xy.p2(0.6, 0, 0),
+                           stroke='black', stroke_width=0.015,
+                           marker_end=arrow),
+                z=z_center)
+        g.append(draw.Line(*inner_xy.p2(0, -0.65, 0), *inner_xy.p2(0, 0.6, 0),
+                           stroke='black', stroke_width=0.015,
+                           marker_end=arrow),
+                z=z_center)
+        g.append(draw.Line(*inner_xy.p2(0, 0, -0.65), *inner_xy.p2(0, 0, 0.6),
+                           stroke='black', stroke_width=0.015,
+                           marker_end=arrow),
+                z=z_center)
+        for pt, (x_off, y_off), elem in inner_labels:
+            x, y = (proj@inner_proj).p2(*pt)
+            g.append(draw.Use(elem, x+x_off, y+y_off), z=10000)
+
+    elevation_lines = False
+    if elevation_lines:
+        for elevation in (*np.linspace(0, np.pi/2, 4, True)[1:-1],
+                          *np.linspace(-np.pi/2, 0, 3, False)[1:]):
+            y = 0.75 * np.sin(elevation)
+            r = 0.75 * np.cos(elevation)
+            draw_band(proj@inner_proj@xy @ euclid3d.translation((0, 0, y)),
+                      trans@inner_proj@xy @ euclid3d.translation((0, 0, y)),
+                      r_outer=r-0.01, r_inner=r+0.01, color='#bbb', opacity=1,
+                      d=g)
+
+    # Outer arrows and text
+    arrow = draw.Marker(-0.1, -0.5, 0.9, 0.5, scale=4, orient='auto')
+    arrow.append(draw.Lines(-0.1, -0.5, -0.1, 0.5, 0.9, 0, fill='black',
+                            close=True))
+    d.append(draw.Line(*proj_xy.p2(1, 0, 0), *proj_xy.p2(1.2, 0, 0),
+                       stroke='black', stroke_width=0.02, marker_end=arrow),
+                       z=100)
+    d.append(draw.Line(*proj_xy.p2(0, 1, 0), *proj_xy.p2(0, 1.2, 0),
+                       stroke='black', stroke_width=0.02, marker_end=arrow),
+                       z=100)
+    d.append(draw.Line(*proj_xy.p2(0, 0, 1), *proj_xy.p2(0, 0, 1.2),
+                       stroke='black', stroke_width=0.02, marker_end=arrow),
+                       z=100)
+    d.append(draw.Line(*proj_xy.p2(-1, 0, 0), *proj_xy.p2(-1.2, 0, 0),
+                       stroke='black', stroke_width=0.02))
+    d.append(draw.Line(*proj_xy.p2(0, -1, 0), *proj_xy.p2(0, -1.2, 0),
+                       stroke='black', stroke_width=0.02))
+    d.append(draw.Line(*proj_xy.p2(0, 0, -1), *proj_xy.p2(0, 0, -1.2),
+                       stroke='black', stroke_width=0.02))
+    d.append(draw.Text(['X'], 0.2, *proj_xy.p2(1.7, 0, 0), center=True,
+                       fill='black'), z=100)
+    d.append(draw.Text(['Y'], 0.2, *proj_xy.p2(0, 1.35, 0), center=True,
+                       fill='black'), z=100)
+    d.append(draw.Text(['Z'], 0.2, *proj_xy.p2(0, 0, 1.4), center=True,
+                       fill='black'), z=100)
+    for pt, (x_off, y_off), elem in outer_labels:
+        x, y = proj.p2(*pt)
+        d.append(draw.Use(elem, x+x_off, y+y_off), z=10000)
+
+    # Extra annotations
+    #label='', axis=None, rot_proj=None
+    if label:
+        d.append(draw.Text([label], 0.4, -0.6, 1.2, center=True, fill='#c00',
+                           text_anchor='end',
+                           opacity=extra_opacity))
+    if axis:
+        g = draw.Group(opacity=extra_opacity)
+        axis = np.array(axis, dtype=float)
+        axis_len = 1.18
+        axis /= np.linalg.norm(axis)
+        arrow = draw.Marker(-0.1, -0.5, 0.9, 0.5, scale=3, orient='auto')
+        arrow.append(draw.Lines(-0.1, -0.5, -0.1, 0.5, 0.9, 0, fill='#e00',
+                                close=True))
+        z = 100#10 * proj_xy.project_point(axis*1)[2]
+        g.append(draw.Line(*proj_xy.p2(0, 0, 0), *proj_xy.p2(*axis*axis_len),
+                           stroke='#e00', stroke_width=0.04, marker_end=arrow))
+        d.append(g, z=z)
+
+    if rot_proj is not None:
+        rot_proj =  inner_proj @ rot_proj
+        r_inner, r_outer = 0.1, 0.16
+        points = np.array([[-1, -1, 1, 1], [-1, 1, 1, -1]]).T
+        start_end_points = np.array([[1, 0], [-1, 0], [0, 1]])
+        p = draw.Path(fill='orange', fill_rule='nonzero', opacity=extra_opacity)
+        z = 9 * (trans@rot_proj).project_point(start_end_points[2])[2]
+        e = shapes.EllipseArc.fromBoundingQuad(
+            *(proj@rot_proj).project_list(points*r_outer)[:, :2].flatten(),
+            *(proj@rot_proj).project_list(start_end_points*r_outer
+                                         )[:, :2].flatten(),
+        )
+        if e: e.reversed().drawToPath(p)
+        e = shapes.EllipseArc.fromBoundingQuad(
+            *(proj@rot_proj).project_list(points*r_inner)[:, :2].flatten(),
+            *(proj@rot_proj).project_list(start_end_points*r_inner
+                                         )[:, :2].flatten(),
+        )
+        if e:
+            e.drawToPath(p, includeL=True)
+        sa = 2.5 * (r_outer-r_inner)
+        xa = -(r_inner+r_outer)/2
+        p.L(*(proj@rot_proj).p2(xa, 0.3*sa))
+        p.L(*(proj@rot_proj).p2(xa+0.5*sa, 0.3*sa))
+        p.L(*(proj@rot_proj).p2(xa, -0.7*sa))
+        p.L(*(proj@rot_proj).p2(xa-0.5*sa, 0.3*sa))
+        p.L(*(proj@rot_proj).p2(xa, 0.3*sa))
+        p.Z()
+        d.append(p, z=z)
+
+    return d
+
+
+def main(name, gates, mp4=False, fps=20, preview=False, style='sphere'):
+    save = 'mp4' if mp4 else 'gif'
+    @do_or_save_animation(name, save=save, fps=fps, preview=preview,
+                          style=style)
+    def animate(state):
+        state.apply_gate_list(gates)
+    print(f'Saved "{name}.{save}" with gate sequence "{"".join(gates)}"')
+
+def run_from_command_line():
+    parser = argparse.ArgumentParser(
+        description='Renders animations of the Bloch sphere for a sequence of '
+                    'single-qubit gates.')
+    parser.add_argument('name', type=str, help=
+        'The file name to save (excluding file extension)')
+    parser.add_argument('gate', type=str, nargs='+', help=
+        'List of gates to apply (e.g. h x wait inv_sqrt_y ...)')
+    parser.add_argument('--mp4', action='store_true', help=
+        'Save an mp4 video instead of a GIF')
+    parser.add_argument('--fps', type=float, default=20, help=
+        'Sets the animation frame rate')
+    parser.add_argument('--style', type=str, choices=['sphere', 'arrows'],
+        default='sphere', help='The style to draw the Bloch sphere. E.g. '
+        'draw the whole sphere or just draw the axis arrows.')
+    args = parser.parse_args()
+    main(name=args.name, gates=args.gate, mp4=args.mp4, fps=args.fps,
+         style=args.style)
+
+if __name__ == '__main__':
+    run_from_command_line()
