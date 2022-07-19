@@ -6,15 +6,15 @@ This repo contains the resources for the lectures and labs in Quantum Crypto fie
 # Quantum Java
 https://github.com/johanvos/quantumjava
 
-This repo is cloned under BSD-3 license from Johan Vos who is author of the book: 
+This repo is cloned under BSD-3 license from the author Johan Vos who is author of the book: 
 'Quantum Computing in Action' @ https://www.manning.com/books/quantum-computing-in-action
 
 # Strange 
-Strange is a Java Open Source implementation for a Quantum Computing Simulator:
+Strange is a Java Open Source implementation for a Quantum Computing Simulator - main author Johan Vos:
 https://github.com/redfx-quantum/strange
 
 # StrangeFX 
-StrangeFX is a Java Open Source with GUI implementation for a Quantum Computing Simulator:
+StrangeFX is a Java Open Source with GUI implementation for a Quantum Computing Simulator - main author Johan Vos:
 https://github.com/redfx-quantum/strangefx
 
 # References
@@ -33,7 +33,7 @@ In addition for the mathematics and quantum mechanics please take into account t
 @ https://link.springer.com/book/10.1007/978-3-030-83274-2
 
 # Bloch Sphere Visualisation Github 
-These repos are included in this repo and they are used for visualisation of the qubit(s) and quantum gates representation in Bloch sphere:
+These repos are included in this repo and they are used for visualisation of the qubit(s) and quantum gates representation in Bloch sphere - author Casey Duckering:
 
 https://github.com/cduck/bloch_sphere
 
