@@ -18,17 +18,17 @@ StrangeFX is a Java Open Source with GUI implementation for a Quantum Computing 
 https://github.com/redfx-quantum/strangefx
 
 # References
-1. 'Quantum Computing in Action' by Johan Vos, Manning Publishing, January 2022, ISBN 9781617296321 
+'Quantum Computing in Action' by Johan Vos, Manning Publishing, January 2022, ISBN 9781617296321 
 @ https://www.manning.com/books/quantum-computing-in-action
 
 In addition for the mathematics and quantum mechanics please take into account the following:
-2. 'Dancing with Qubits' by Robert S. Sutor, Packt, November 2021, ISBN 9781838827366
+'Dancing with Qubits' by Robert S. Sutor, Packt, November 2021, ISBN 9781838827366
 @ https://www.packtpub.com/product/dancing-with-qubits/9781838827366
 
-3. 'Quantum Computing for Everyone' by Chris Bernhardt, MIT Press, March 2019/September 2020, ISBN: 9780262039253 | ISBN: 9780262539531
+'Quantum Computing for Everyone' by Chris Bernhardt, MIT Press, March 2019/September 2020, ISBN: 9780262039253 | ISBN: 9780262539531
 @ https://mitpress.mit.edu/books/quantum-computing-everyone
 
-4. 'Quantum Computing: An Applied Approach' 2nd Edition by Jack D. Hidary, Springer, 2021, ISBN: 978-3-030-83274-2 | ISBN: 978-3-030-83273-5
+'Quantum Computing: An Applied Approach' 2nd Edition by Jack D. Hidary, Springer, 2021, ISBN: 978-3-030-83274-2 | ISBN: 978-3-030-83273-5
 
 # Bloch Sphere Visualisation Github 
 These repos are included in this repo and they are used for visualisation of the qubit(s) and quantum gates representation in Bloch sphere:
