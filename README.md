@@ -22,7 +22,7 @@ https://github.com/redfx-quantum/strangefx
 # References
 - 'Quantum Computing in Action' by Johan Vos, Manning Publishing, January 2022, ISBN 9781617296321 
 
-@ https://www.manning.com/books/quantum-computing-in-action
+@ https://www.manning.com/books/quantum-computing-in-action | https://github.com/johanvos/quantumjava
 
 - 'Programming Quantum Computers: Essential Algorithms and Code Samples' by Eric R. Johnston, Nic Harrigan, Mercedes Gimeno-Segovia, O'Reilly Publishing, July 2019, ISBN-13: 978-1492039686 | ISBN-10: 1492039683 
 
