@@ -30,6 +30,7 @@ In addition for the mathematics and quantum mechanics please take into account t
 @ https://mitpress.mit.edu/books/quantum-computing-everyone
 
 - 'Quantum Computing: An Applied Approach' 2nd Edition by Jack D. Hidary, Springer, 2021, ISBN: 978-3-030-83274-2 | ISBN: 978-3-030-83273-5
+@ https://link.springer.com/book/10.1007/978-3-030-83274-2
 
 # Bloch Sphere Visualisation Github 
 These repos are included in this repo and they are used for visualisation of the qubit(s) and quantum gates representation in Bloch sphere:
