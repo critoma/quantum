@@ -34,6 +34,8 @@ In addition for the mathematics and quantum mechanics please take into account t
 
 # Bloch Sphere Visualisation Github 
 These repos are included in this repo and they are used for visualisation of the qubit(s) and quantum gates representation in Bloch sphere:
+
 https://github.com/cduck/bloch_sphere
+
 https://github.com/cduck/feynman_path
 
