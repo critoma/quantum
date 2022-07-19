@@ -2,6 +2,7 @@
 Quantum Computing and PQC - Post Quantum Crypto
 
 This repo contains the resources for the lectures and labs in Quantum Crypto field within ISM - IT | Cybersecurity Master Program - www.ism.ase.ro
+
 This repo has modifications for the compile/run command line (adapted to run with Java OpenJDK 17 and Open JavaFX 17 for MacOS/Linux on both Intel/AMD and ARM CPUs) and some modified samples from the Quantum Java repo - author Johan Vos
 
 # Quantum Java
