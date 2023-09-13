@@ -7,6 +7,134 @@ Vs
 
 mvn clean javafx:run
 
+####################################
+# command line for MacOS:
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home
+export PATH=.:$JAVA_HOME/bin:$PATH
+
+export QHOME=/Users/critoma/Downloads/quantum/quantumjava
+export QJSTRANGELIB=/Users/critoma/Downloads/quantum/strange
+export QJSTRANGEFXLIB=/Users/critoma/Downloads/quantum/strangefx
+export JAVAFX_HOME=/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2
+
+####################################
+# CH 03
+# Pauli-X:
+# https://github.com/critoma/quantum/tree/main/quantumjava/ch03/paulix
+cd $QHOME/ch03/paulix/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch03/paulix/Main.java
+java -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org.redfx.javaqc.ch03.paulix.Main
+rm org/redfx/javaqc/ch03/paulix/Main.class
+
+# Pauli-X with Java FX UI:
+# https://github.com/critoma/quantum/tree/main/quantumjava/ch03/paulixui
+cd $QHOME/ch03/paulixui/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch03/paulixui/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml org.redfx.javaqc.ch03.paulixui.Main
+rm org/redfx/javaqc/ch03/paulixui/Main.class
+
+
+####################################
+# CH 04
+# Hadamard - Superposition with Java FX UI:
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch04/hadamard/src/main/java/org/redfx/javaqc/ch04/hadamard/Main.java
+cd $QHOME/ch04/hadamard/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch04/hadamard/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch04.hadamard.Main
+rm org/redfx/javaqc/ch04/hadamard/Main.class
+
+# Hadamard 2 - Superposition but ANY Quantum GATE is UNITARY => applied twice one after eaachother is coming to the previous state - coin
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch04/hadamard2/src/main/java/org/redfx/javaqc/ch04/hadamard2/Main.java
+cd $QHOME/ch04/hadamard2/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch04/hadamard2/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch04.hadamard2.Main
+rm org/redfx/javaqc/ch04/hadamard2/Main.class
+
+
+####################################
+# CH 05
+# Probabilities, coin flip classical <=> in quantum computing: H gate + CNOT Gate => Bell State between 2 qubits => Qubit entanglement:
+
+# Flipping 2 coins Java FX UI
+# https://github.com/critoma/quantum/tree/main/quantumjava/ch05/classiccoin/src/main/java/org/redfx/javaqc/ch05/classiccoin
+cd $QHOME/ch05/classiccoin/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch05/classiccoin/TwoCoins.java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch05/classiccoin/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch05.classiccoin.Main
+rm org/redfx/javaqc/ch05/classiccoin/Main.class
+rm org/redfx/javaqc/ch05/classiccoin/TwoCoins.class
+
+# Independent probabilities: The quantum way - Quantum Flipping Coins Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch05/quantumcoin/src/main/java/org/redfx/javaqc/ch05/quantumcoin/Main.java
+cd $QHOME/ch05/quantumcoin/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch05/quantumcoin/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch05.quantumcoin.Main
+rm org/redfx/javaqc/ch05/quantumcoin/Main.class
+
+# CNOT gate playground - How is working CNOT Gate Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch05/cnot/src/main/java/org/redfx/javaqc/ch05/cnot/Main.java
+cd $QHOME/ch05/cnot/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch05/cnot/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch05.cnot.Main
+rm org/redfx/javaqc/ch05/cnot/Main.class
+
+# Bell state => Qubits entanglement Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch05/bellstate/src/main/java/org/redfx/javaqc/ch05/bellstate/Main.java
+cd $QHOME/ch05/bellstate/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*"  org/redfx/javaqc/ch05/bellstate/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch05.bellstate.Main
+rm org/redfx/javaqc/ch05/bellstate/Main.class
+
+
+####################################
+# CH 06
+# Classic Networking minimal Java TCP recap w Lambda Threads, Classic copy/Quantum No-cloning theorem, Pauli-Z and CZ gates playground, Quantum Networking & Quantum Teleportation
+
+# Classic Networking minimal Java TCP recap w Lambda Threads
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch06/classic/src/main/java/org/redfx/javaqc/ch06/classic/Main.java
+cd $QHOME/ch06/classic/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch06/classic/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch06.classic.Main
+rm org/redfx/javaqc/ch06/classic/Main.class
+
+# Classic copy - memcpy Boolean obj in Java
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch06/classiccopy/src/main/java/org/redfx/javaqc/ch06/classiccopy/Main.java
+cd $QHOME/ch06/classiccopy/src/main/java
+javac -cp .:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch06/classiccopy/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch06.classiccopy.Main
+rm org/redfx/javaqc/ch06/classiccopy/Main.class
+
+
+# H gate and Controlled-Z (Cz) gate playground with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch06/hczmeasure/src/main/java/org/redfx/javaqc/ch06/hczmeasure/Main.java
+cd $QHOME/ch06/hczmeasure/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch06/hczmeasure/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch06.hczmeasure.Main
+rm org/redfx/javaqc/ch06/hczmeasure/Main.class
+
+
+# Quantum Networking + Qubit (Information) Teleportation with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch06/teleport/src/main/java/org/redfx/javaqc/ch06/teleport/Main.java
+cd $QHOME/ch06/teleport/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch06/teleport/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch06.teleport.Main
+rm org/redfx/javaqc/ch06/teleport/Main.class
+
+
+# Quantum (Network) Repeater with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch06/repeater/src/main/java/org/redfx/javaqc/ch06/repeater/Main.java
+cd $QHOME/ch06/repeater/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch06/repeater/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" --module-path $JAVAFX_HOME/lib --add-modules=javafx.controls,javafx.fxml  org.redfx.javaqc.ch06.repeater.Main
+rm org/redfx/javaqc/ch06/repeater/Main.class
+
+
+
+####################################
+# CH 07
+# Quantum Algorithms and Code
+# Quantum Hello World Re-explained
+
 
 
 javac -cp .:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch07/add2/Main.java
