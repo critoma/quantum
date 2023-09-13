@@ -5,9 +5,11 @@ public class Main {
     static Boolean makeCopy(Boolean source) {
         Boolean target;
         if (source == true) {
-            target = new Boolean(true);
+            // target = new Boolean(true);
+            target = Boolean.valueOf(true);
         } else {
-            target = new Boolean(false);
+            // target = new Boolean(false);
+            target = Boolean.valueOf(false);
         }
         return target;
     }
@@ -23,3 +25,4 @@ public class Main {
     }
 
 }
+
