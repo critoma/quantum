@@ -7,6 +7,7 @@ Vs
 
 mvn clean javafx:run
 
+# https://github.com/critoma/quantum/blob/main/buildRun.txt
 ####################################
 # command line for MacOS:
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home
@@ -133,16 +134,88 @@ rm org/redfx/javaqc/ch06/repeater/Main.class
 ####################################
 # CH 07
 # Quantum Algorithms and Code
-# Quantum Hello World Re-explained
+# Random Qubits, Random Qubits with Debugging, Addition of two qubits without carry and with carry, Quantum Hello World Re-explained
+
+# Random Qubits without debugging using Java FX UI 
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch07/randombit/src/main/java/org/redfx/javaqc/ch07/randombit/Main.java
+cd $QHOME/ch07/randombit/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch07/randombit/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch07.randombit.Main
+rm org/redfx/javaqc/ch07/randombit/Main.class
+
+# Random Qubits WITH debugging using Java FX UI 
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch07/randombitdebug/src/main/java/org/redfx/javaqc/ch07/randombitdebug/Main.java
+cd $QHOME/ch07/randombitdebug/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch07/randombitdebug/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch07.randombitdebug.Main
+rm org/redfx/javaqc/ch07/randombitdebug/Main.class
+
+# Addition without carry flag using Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch07/add1/src/main/java/org/redfx/javaqc/ch07/add1/Main.java
+cd $QHOME/ch07/add1/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch07/add1/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch07.add1.Main
+rm org/redfx/javaqc/ch07/add1/Main.class
+
+# Addition WITH carry flag using Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch07/add2/src/main/java/org/redfx/javaqc/ch07/add2/Main.java
+cd $QHOME/ch07/add2/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch07/add2/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch07.add2.Main
+rm org/redfx/javaqc/ch07/add2/Main.class
+
+
+####################################
+# CH 08
+# Secure Communication Using Quantum Computing
+# Bootstrap problem, Quantum Key Distribution (QKD) - naive implementation, QKD - applying 2 H Gate (haha) and using Superposition, Guess for BB84 - Confusing Eve, QKD in Java - BB84
+
+
+# Quantum Key Distribution (QKD) - naive implementation with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch08/naive/src/main/java/org/redfx/javaqc/ch08/naive/Main.java
+cd $QHOME/ch08/naive/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/naive/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch08.naive.Main
+rm org/redfx/javaqc/ch08/naive/Main.class
+
+# QKD - HaHa gates with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch08/haha/src/main/java/org/redfx/javaqc/ch08/haha/Main.java
+cd $QHOME/ch08/haha/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/haha/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch08.haha.Main
+rm org/redfx/javaqc/ch08/haha/Main.class
+
+
+# QKD - confusing Eve with Java FX UI:
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch08/superposition/src/main/java/org/redfx/javaqc/ch08/superposition/Main.java
+cd $QHOME/ch08/superposition/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/superposition/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch08.superposition.Main
+rm org/redfx/javaqc/ch08/superposition/Main.class
+
+
+# QKD - BB84 with guessing with Java FX UI:
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch08/guess/src/main/java/org/redfx/javaqc/ch08/guess/Main.java
+cd $QHOME/ch08/guess/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/guess/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch08.guess.Main
+rm org/redfx/javaqc/ch08/guess/Main.class
+
+
+# QKD - BB84 with Java FX UI:
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch08/bb84/src/main/java/org/redfx/javaqc/ch08/bb84/Main.java
+cd $QHOME/ch08/bb84/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/bb84/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch08.bb84.Main
+rm org/redfx/javaqc/ch08/bb84/Main.class
 
 
 
-javac -cp .:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar org/redfx/javaqc/ch07/add2/Main.java
+
+#########
 
 
-java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" org.redfx.javaqc.ch07.add2.Main
-
-
+###############
 
 java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" org.redfx.javaqc.ch09.reversiblex.Main
 
