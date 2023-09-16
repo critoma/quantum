@@ -23,7 +23,7 @@ public class Main {
         Step step1 = new Step();
         step1.addGate(new X(0));
         program.addStep(step0);
-        //program.addStep(step1);
+        program.addStep(step1); //program.addStep(step1);
         program.initializeQubit(0,.5);
 
         Result result = simulator.runProgram(program);
