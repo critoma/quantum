@@ -186,7 +186,7 @@ java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/targ
 rm org/redfx/javaqc/ch08/haha/Main.class
 
 
-# QKD - confusing Eve with Java FX UI:
+# QKD  - Using superposition to prevent easy reading of a secret key - with Java FX UI:
 # https://github.com/critoma/quantum/blob/main/quantumjava/ch08/superposition/src/main/java/org/redfx/javaqc/ch08/superposition/Main.java
 cd $QHOME/ch08/superposition/src/main/java
 javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/superposition/Main.java
@@ -194,7 +194,7 @@ java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/targ
 rm org/redfx/javaqc/ch08/superposition/Main.class
 
 
-# QKD - BB84 with guessing with Java FX UI:
+# QKD - BB84 - confusing Eve with guessing simulates the possible outcomes for the eight different scenarios and Bob is confused too, with Java FX UI:
 # https://github.com/critoma/quantum/blob/main/quantumjava/ch08/guess/src/main/java/org/redfx/javaqc/ch08/guess/Main.java
 cd $QHOME/ch08/guess/src/main/java
 javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/guess/Main.java
@@ -202,7 +202,7 @@ java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/targ
 rm org/redfx/javaqc/ch08/guess/Main.class
 
 
-# QKD - BB84 with Java FX UI:
+# QKD - BB84 in Java with Java FX UI:
 # https://github.com/critoma/quantum/blob/main/quantumjava/ch08/bb84/src/main/java/org/redfx/javaqc/ch08/bb84/Main.java
 cd $QHOME/ch08/bb84/src/main/java
 javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch08/bb84/Main.java
@@ -211,9 +211,140 @@ rm org/redfx/javaqc/ch08/bb84/Main.class
 
 
 
+####################################
+# CH 09
+# Deutsch-Jozsa algorithm
+# Constant and Balanced Function, Reversible Quantum Gates, Oracle Matrix Function, Applying oracle, Deutsch Algorithm, Deutsch-Jozsa algorithm
+
+
+# Constant and Balanced Function: Two evaluations to declare a function constant or balanced - NO UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch09/function/src/main/java/org/redfx/javaqc/ch09/function/Main.java
+cd $QHOME/ch09/function/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" org/redfx/javaqc/ch09/function/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" org.redfx.javaqc.ch09.function.Main
+rm org/redfx/javaqc/ch09/function/Main.class
+
+
+# Reversible Quantum Gates: Two Pauli-X gates applied to a single qubit using experimental evidence with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch09/reversibleX/src/main/java/org/redfx/javaqc/ch09/reversiblex/Main.java
+cd $QHOME/ch09/reversiblex/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch09/reversiblex/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch09.reversiblex.Main
+rm org/redfx/javaqc/ch09/reversiblex/Main.class
+
+
+# Oracle Matrix Functions with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch09/oracle/src/main/java/org/redfx/javaqc/ch09/oracle/Main.java
+cd $QHOME/ch09/oracle/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch09/oracle/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch09.oracle.Main
+rm org/redfx/javaqc/ch09/oracle/Main.class
+
+
+# Applying oracle with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch09/applyoracle/src/main/java/org/redfx/javaqc/ch09/applyoracle/Main.java
+cd $QHOME/ch09/applyoracle/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch09/applyoracle/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch09.applyoracle.Main
+rm org/redfx/javaqc/ch09/applyoracle/Main.class
+
+
+# Deutsch Algorithm - Creating an oracle with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch09/deutsch/src/main/java/org/redfx/javaqc/ch09/deutsch/Main.java
+cd $QHOME/ch09/deutsch/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch09/deutsch/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch09.deutsch.Main
+rm org/redfx/javaqc/ch09/deutsch/Main.class
+
+
+
+# Deutsch-Jozsa algorithm with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch09/deutschjozsa/src/main/java/org/redfx/javaqc/ch09/deutschjozsa/Main.java
+cd $QHOME/ch09/deutschjozsa/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch09/deutschjozsa/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch09.deutschjozsa.Main
+rm org/redfx/javaqc/ch09/deutschjozsa/Main.class
+
+
+
+####################################
+# CH 10
+# Grover’s search algorithm
+# Classic Search, ??? ....
+
+# Classic search within "database" with Java Lambda Functional Programming - no UI
+# https://github.com/critoma/quantum/tree/main/quantumjava/ch10/classicsearch/src/main/java/org/redfx/javaqc/ch10/classicsearch
+cd $QHOME/ch10/classicsearch/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" org/redfx/javaqc/ch10/classicsearch/*.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" org.redfx.javaqc.ch10.classicsearch.Main
+rm org/redfx/javaqc/ch10/classicsearch/*.class
+
+
+# Quantum search - no UI
+# https://github.com/critoma/quantum/tree/main/quantumjava/ch10/quantumsearch/src/main/java/org/redfx/javaqc/ch10/quantumsearch
+cd $QHOME/ch10/quantumsearch/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" org/redfx/javaqc/ch10/quantumsearch/*.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" org.redfx.javaqc.ch10.quantumsearch.Main
+rm org/redfx/javaqc/ch10/quantumsearch/*.class
+
+
+# Grover - with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch10/grover/src/main/java/org/redfx/javaqc/ch10/grover/Main.java
+cd $QHOME/ch10/grover/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch10/grover/*.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch10.grover.Main
+rm org/redfx/javaqc/ch10/grover/*.class
+
+# Grover oracle - with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch10/groveroracle/src/main/java/org/redfx/javaqc/ch10/groveroracle/Main.java
+cd $QHOME/ch10/groveroracle/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch10/groveroracle/*.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch10.groveroracle.Main
+rm org/redfx/javaqc/ch10/groveroracle/*.class
+
+# Step-by-step Grover - with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch10/stepbystepgrover/src/main/java/org/redfx/javaqc/ch10/stepbystepgrover/Main.java#L13
+cd $QHOME/ch10/stepbystepgrover/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch10/stepbystepgrover/*.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch10.stepbystepgrover.Main
+rm org/redfx/javaqc/ch10/stepbystepgrover/*.class
+
+
+
+
+####################################
+# CH 11
+# Shor’s algorithm
+# Classic factor, Semi-Classic factor, Quantum factor
+
+# Classic factor - no UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch11/classicfactor/src/main/java/com/javaqc/ch11/classicfactor/Main.java
+cd $QHOME/ch11/classicfactor/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" com/javaqc/ch11/classicfactor/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" com.javaqc.ch11.classicfactor.Main
+rm com/javaqc/ch11/classicfactor/*.class
+
+
+# Semi-Classic factor - no UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch11/semiclassicfactor/src/main/java/com/javaqc/ch11/semiclassicfactor/Main.java
+cd $QHOME/ch11/semiclassicfactor/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" com/javaqc/ch11/semiclassicfactor/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" com.javaqc.ch11.semiclassicfactor.Main
+rm com/javaqc/ch11/semiclassicfactor/*.class
+
+
+# Quantum factor - no UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch11/quantumfactor/src/main/java/com/javaqc/ch11/quantumfactor/Main.java
+cd $QHOME/ch11/quantumfactor/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" com/javaqc/ch11/quantumfactor/Main.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar" com.javaqc.ch11.quantumfactor.Main
+rm com/javaqc/ch11/quantumfactor/*.class
+
+
+
+
 
 #########
-
 
 ###############
 
