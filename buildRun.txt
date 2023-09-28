@@ -1,4 +1,4 @@
-/Users/critoma/Downloads/quantum/quantumjava
+cd /Users/critoma/Downloads/quantum/quantumjava
 
 mvn clean compile
 
@@ -7,7 +7,12 @@ Vs
 
 mvn clean javafx:run
 
+
+
+####################################
+# https://github.com/critoma/quantum/blob/main/quantumjava/README.md
 # https://github.com/critoma/quantum/blob/main/buildRun.txt
+# 
 ####################################
 # command line for MacOS:
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home
@@ -270,7 +275,7 @@ rm org/redfx/javaqc/ch09/deutschjozsa/Main.class
 ####################################
 # CH 10
 # Grover’s search algorithm
-# Classic Search, ??? ....
+# Classic Search, Quantum Search, Grover, Step-by-step Grover, Grover with oracle
 
 # Classic search within "database" with Java Lambda Functional Programming - no UI
 # https://github.com/critoma/quantum/tree/main/quantumjava/ch10/classicsearch/src/main/java/org/redfx/javaqc/ch10/classicsearch
@@ -288,6 +293,7 @@ java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/targ
 rm org/redfx/javaqc/ch10/quantumsearch/*.class
 
 
+
 # Grover - with Java FX UI
 # https://github.com/critoma/quantum/blob/main/quantumjava/ch10/grover/src/main/java/org/redfx/javaqc/ch10/grover/Main.java
 cd $QHOME/ch10/grover/src/main/java
@@ -295,12 +301,6 @@ javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/tar
 java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch10.grover.Main
 rm org/redfx/javaqc/ch10/grover/*.class
 
-# Grover oracle - with Java FX UI
-# https://github.com/critoma/quantum/blob/main/quantumjava/ch10/groveroracle/src/main/java/org/redfx/javaqc/ch10/groveroracle/Main.java
-cd $QHOME/ch10/groveroracle/src/main/java
-javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch10/groveroracle/*.java
-java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch10.groveroracle.Main
-rm org/redfx/javaqc/ch10/groveroracle/*.class
 
 # Step-by-step Grover - with Java FX UI
 # https://github.com/critoma/quantum/blob/main/quantumjava/ch10/stepbystepgrover/src/main/java/org/redfx/javaqc/ch10/stepbystepgrover/Main.java#L13
@@ -310,6 +310,12 @@ java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/targ
 rm org/redfx/javaqc/ch10/stepbystepgrover/*.class
 
 
+# Grover oracle - with Java FX UI
+# https://github.com/critoma/quantum/blob/main/quantumjava/ch10/groveroracle/src/main/java/org/redfx/javaqc/ch10/groveroracle/Main.java
+cd $QHOME/ch10/groveroracle/src/main/java
+javac -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org/redfx/javaqc/ch10/groveroracle/*.java
+java -cp ".:$QJSTRANGELIB/target/strange-0.1.4-SNAPSHOT.jar:$QJSTRANGEFXLIB/target/strangefx-0.1.5-SNAPSHOT.jar:$JAVAFX_HOME/lib/*" org.redfx.javaqc.ch10.groveroracle.Main
+rm org/redfx/javaqc/ch10/groveroracle/*.class
 
 
 ####################################
@@ -342,15 +348,8 @@ rm com/javaqc/ch11/quantumfactor/*.class
 
 
 
+############################################
 
-
-#########
-
-###############
-
-java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" org.redfx.javaqc.ch09.reversiblex.Main
-
-
-
-
+# Other tests:
 java -cp ".:/Users/critoma/Downloads/quantum/strange/target/strange-0.1.4-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/strangefx/target/strangefx-0.1.5-SNAPSHOT.jar:/Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib/*" --module-path /Users/critoma/Downloads/quantum/javafx-sdk-17.0.2/lib --add-modules=javafx.controls,javafx.fxml org.redfx.strangefx.ui.Main
+
