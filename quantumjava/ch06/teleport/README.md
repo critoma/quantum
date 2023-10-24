@@ -9,7 +9,7 @@ To run this application, simply run
 `mvn clean javafx:run`
 
 There is no relevant output in the console, but the following UI will be shown:
-![Teleport UI](/resources/ch6-teleport.png)
+![Teleport UI](../../resources/ch6-teleport.png)
 
 
 # What it is doing
