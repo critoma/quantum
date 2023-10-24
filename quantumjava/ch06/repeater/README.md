@@ -44,7 +44,7 @@ cnt [31]: 55
 
 ```
 This is shown more clearly in the following that is also shown:
-![Repeater UI](/resources/ch6-repeater.png)
+![Repeater UI](../../resources/ch6-repeater.png)
 
 
 # What it is doing
