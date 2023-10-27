@@ -25,7 +25,7 @@ JavaFX Platform initialized
 
 and a UI similar to this:
 
-![bb84](/resources/ch8-bb84.png)
+![bb84](../../resources/ch8-bb84.png)
 
 # What it is doing
 
