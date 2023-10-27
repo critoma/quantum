@@ -10,7 +10,7 @@ To run this application, simply run
 
 There is no relevant console output, but the following circuit will be shown:
 
-![haha](/resources/ch8-haha.png)
+![haha](../../resources/ch8-haha.png)
 
 # What it is doing
 
