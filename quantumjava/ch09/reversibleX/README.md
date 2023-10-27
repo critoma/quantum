@@ -9,7 +9,7 @@ To run this application, simply run
 
 The result of this application is a user interface showing the circuit and the probabilities:
 
-![Reversible](/resources/ch9-reversible.png)
+![Reversible](../../resources/ch9-reversible.png)
 
 
 # What it is doing
