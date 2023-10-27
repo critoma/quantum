@@ -19,7 +19,7 @@ Alice sent 0 and Bob received 0
 
 The circuit that is used to generate this is shown below:
 
-![naive](/resources/ch8-naive.png)
+![naive](../../resources/ch8-naive.png)
 
 # What it is doing
 
