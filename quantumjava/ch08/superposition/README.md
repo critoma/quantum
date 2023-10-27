@@ -19,7 +19,7 @@ Alice sent 1 and Bob received 1
 
 The circuit that is used to generate this is shown below:
 
-![superposition](/resources/ch8-superposition.png)
+![superposition](../../resources/ch8-superposition.png)
 
 # What it is doing
 
