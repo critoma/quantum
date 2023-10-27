@@ -17,7 +17,7 @@ cnt [3]: 458
 
 Also, the following quantum circuit and probability chart are shown:
 
-![oracle](/resources/ch9-oracle.png)
+![oracle](../../resources/ch9-oracle.png)
 
 
 # What it is doing
