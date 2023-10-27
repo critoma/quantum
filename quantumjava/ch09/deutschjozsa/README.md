@@ -23,7 +23,7 @@ f = 1, val = 1
 
 Also, the following quantum circuit is rendered:
 
-![deutschjozsa](/resources/ch9-deutschjozsa.png)
+![deutschjozsa](../../resources/ch9-deutschjozsa.png)
 
 
 # What it is doing
