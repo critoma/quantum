@@ -23,7 +23,7 @@ f = 4, val = 0
 
 Also, the following quantum circuit and probability chart are shown:
 
-![deutsch](/resources/ch9-deutsch.png)
+![deutsch](../../resources/ch9-deutsch.png)
 
 
 # What it is doing
