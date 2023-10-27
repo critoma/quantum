@@ -23,7 +23,7 @@ Alice sent 0 and Bob received 1
 
 The circuit that is used to generate this is shown below:
 
-![guess](/resources/ch8-guess.png)
+![guess](../../resources/ch8-guess.png)
 
 # What it is doing
 
