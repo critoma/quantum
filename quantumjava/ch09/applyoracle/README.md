@@ -37,7 +37,7 @@ C, measured = 0, 1
 
 Also, the following quantum circuit and probability chart are shown:
 
-![applying oracle](/resources/ch9-applyoracle.png)
+![applying oracle](../../resources/ch9-applyoracle.png)
 
 
 # What it is doing
