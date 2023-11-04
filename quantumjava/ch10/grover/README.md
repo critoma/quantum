@@ -62,7 +62,7 @@ n = 6 and N = 64, dY = 6.625
 
 The quantum circuit for Grover's algorithm is shown as well:
 
-![grover](/resources/ch10-grover.png)
+![grover](../../resources/ch10-grover.png)
 
 
 
