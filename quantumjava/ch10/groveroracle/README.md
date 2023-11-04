@@ -32,7 +32,7 @@ n = 2 and N = 4, dY = 40.0
 
 The quantum circuit for the oracle in Grover's algorithm is shown as well:
 
-![grover](/resources/ch10-groveroracle.png)
+![grover](../../resources/ch10-groveroracle.png)
 
 
 
