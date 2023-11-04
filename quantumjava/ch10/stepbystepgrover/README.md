@@ -35,7 +35,7 @@ n = 2 and N = 4, dY = 40.0
 
 The quantum circuit for Grover's algorithm is shown as well:
 
-![grover](/resources/ch10-stepbystepgrover.png)
+![grover](../../resources/ch10-stepbystepgrover.png)
 
 
 
