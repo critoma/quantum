@@ -20,7 +20,13 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             List<Person> persons = prepareDatabase();
             Collections.shuffle(persons);
+            
+            // Quantum Search
+            // https://github.com/critoma/quantum/blob/main/strange/src/main/java/org/redfx/strange/algorithm/Classic.java
+            // https://github.com/redfx-quantum/strange/blob/master/src/main/java/org/redfx/strange/algorithm/Classic.java):
             Person target = Classic.search(persons, f29Mexico);
+            // Non-quantum search: // Person target = findPersonByFunction(persons, f29Mexico);
+            
             System.out.println("Result of function Search = " + target.getName());
         }
     }
@@ -40,14 +46,14 @@ public class Main {
     
     List<Person> prepareDatabase() {
         List<Person> persons = new LinkedList<>();
-        persons.add(new Person("Alice", 42, "Nigeria"));
-        persons.add(new Person("Bob", 36, "Australia"));
-        persons.add(new Person("Eve", 85, "USA"));
-        persons.add(new Person("Niels", 18, "Greece"));
+        persons.add(new Person("Alice", 42, "USA"));
+        persons.add(new Person("Bob", 36, "UK"));
+        persons.add(new Person("Eve", 85, "Australia"));
+        persons.add(new Person("Nikos", 18, "Greece"));
         persons.add(new Person("Albert", 29, "Mexico"));
-        persons.add(new Person("Roger", 29, "Belgium"));
-        persons.add(new Person("Marie", 15, "Russia"));
-        persons.add(new Person("Janice", 52, "China"));
+        persons.add(new Person("Alexandra", 29, "Romania"));
+        persons.add(new Person("Marie", 15, "Ukraine"));
+        persons.add(new Person("Janice", 52, "Israel"));
         return persons;
     }
 
