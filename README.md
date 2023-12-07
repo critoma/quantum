@@ -45,6 +45,17 @@ In addition for the mathematics, quantum mechanics and some additional coding pl
 More math recap:
 - 'Quantum Computing Fundamentals' by Dr. Chuck Easttom, Addison-Wesley Pearson Education, 2021, ISBN-13: 978-0136793816 | ISBN-10: 0136793819 
 
+# Some PQC implementations
+
+https://pq-crystals.org/kyber/index.shtml
+
+Reference implementation: https://github.com/pq-crystals/kyber 
+Java: https://github.com/fisherstevenk/kyberJCE 
+js: https://github.com/antontutoveanu/crystals-kyber-javascript 
+Java Card:
+JC XMSS (Extended Merkle Signature Scheme): https://www.mnm-team.org/pub/Diplomarbeiten/kage20/PDF-Version/kage20.pdf
+JC XMSS: https://github.com/joostrijneveld/javacard-xmss
+JC Infineon Kyber implementation: https://blogs.oracle.com/java/post/java-card-at-javaone-2022-in-las-vegas
 
 # Bloch Sphere Visualisation Repo 
 These repos are included in this repo and they are used for visualisation of the qubit(s) and quantum gates representation in Bloch sphere - author Casey Duckering:
