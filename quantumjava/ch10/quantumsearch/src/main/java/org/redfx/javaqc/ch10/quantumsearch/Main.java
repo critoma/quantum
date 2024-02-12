@@ -20,14 +20,20 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             List<Person> persons = prepareDatabase();
             Collections.shuffle(persons);
-            
-            // Quantum Search
-            // https://github.com/critoma/quantum/blob/main/strange/src/main/java/org/redfx/strange/algorithm/Classic.java
-            // https://github.com/redfx-quantum/strange/blob/master/src/main/java/org/redfx/strange/algorithm/Classic.java):
-            Person target = Classic.search(persons, f29Mexico);
+            // Quantum Search 
+	        // https://github.com/critoma/quantum/blob/main/strange/src/main/java/org/redfx/strange/algorithm/Classic.java 
+            // https://github.com/redfx-quantum/strange/blob/master/src/main/java/org/redfx/strange/algorithm/Classic.java: 
+            // Person target = Classic.search(persons, f29Mexico);
             // Non-quantum search: // Person target = findPersonByFunction(persons, f29Mexico);
+            // System.out.println("Result of function Search = " + target.getName());
             
-            System.out.println("Result of function Search = " + target.getName());
+            System.out.println("### Quantum:");
+            Person target = Classic.search(persons, f29Mexico);
+            System.out.println("Result of 'Classic' aka Quantum Function Search = " + target.getName());
+
+            System.out.println("--- NON-Quantum:");
+            Person targetNQ = findPersonByFunction(persons, f29Mexico);
+            System.out.println("Result of function non-quantum Search = " + targetNQ.getName());
         }
     }
 
@@ -51,11 +57,21 @@ public class Main {
         persons.add(new Person("Eve", 85, "Australia"));
         persons.add(new Person("Nikos", 18, "Greece"));
         persons.add(new Person("Albert", 29, "Mexico"));
-        persons.add(new Person("Alexandra", 29, "Romania"));
+        persons.add(new Person("Andreea", 29, "Romania"));
         persons.add(new Person("Marie", 15, "Ukraine"));
-        persons.add(new Person("Janice", 52, "Israel"));
+        persons.add(new Person("Janice", 50, "Israel"));
+        persons.add(new Person("Jake", 41, "USA"));    
+        persons.add(new Person("Andrew", 58, "UK"));
+        persons.add(new Person("Nicole", 19, "Australia"));
+        persons.add(new Person("Elena", 21, "Greece"));
+        persons.add(new Person("Gabriela", 22, "Mexico"));
+        persons.add(new Person("Alexandru", 28, "Romania"));
+        persons.add(new Person("Maria", 17, "Bulgaria"));
+        persons.add(new Person("Naomi", 32, "Israel"));
         return persons;
     }
 
 }
+
+
 
