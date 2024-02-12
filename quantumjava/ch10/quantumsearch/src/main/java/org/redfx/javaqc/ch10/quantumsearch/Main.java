@@ -66,7 +66,7 @@ public class Main {
         persons.add(new Person("Elena", 21, "Greece"));
         persons.add(new Person("Gabriela", 22, "Spain"));
         persons.add(new Person("Alexandru", 28, "Canada"));
-        //persons.add(new Person("Maria", 17, "Italy"));
+        persons.add(new Person("Maria", 17, "Italy"));
         persons.add(new Person("Naomi", 32, "France"));
         return persons;
     }
