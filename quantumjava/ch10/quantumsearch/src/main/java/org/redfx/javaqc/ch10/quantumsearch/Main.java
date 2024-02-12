@@ -57,17 +57,17 @@ public class Main {
         persons.add(new Person("Eve", 85, "Australia"));
         persons.add(new Person("Nikos", 18, "Greece"));
         persons.add(new Person("Albert", 29, "Mexico"));
-        persons.add(new Person("Andreea", 29, "Romania"));
+        persons.add(new Person("Andreea", 29, "Romania"));   
         persons.add(new Person("Marie", 15, "Ukraine"));
         persons.add(new Person("Janice", 50, "Israel"));
-        persons.add(new Person("Jake", 41, "USA"));    
+        persons.add(new Person("Jake", 41, "USA"));
         persons.add(new Person("Andrew", 58, "UK"));
         persons.add(new Person("Nicole", 19, "Australia"));
         persons.add(new Person("Elena", 21, "Greece"));
-        persons.add(new Person("Gabriela", 22, "Mexico"));
-        persons.add(new Person("Alexandru", 28, "Romania"));
-        persons.add(new Person("Maria", 17, "Bulgaria"));
-        persons.add(new Person("Naomi", 32, "Israel"));
+        persons.add(new Person("Gabriela", 22, "Spain"));
+        persons.add(new Person("Alexandru", 28, "Canada"));
+        //persons.add(new Person("Maria", 17, "Italy"));
+        persons.add(new Person("Naomi", 32, "France"));
         return persons;
     }
 
