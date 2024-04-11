@@ -10,7 +10,7 @@ To run this application, simply run
 There is no output on the console, but the quantum circuit
 and probability distribution is shown:
 
-![Bell](../resources/ch5-bell.png)
+![Bell](../../resources/ch5-bell.png)
 
 
 # What it is doing
