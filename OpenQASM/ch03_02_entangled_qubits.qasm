@@ -28,3 +28,23 @@ h a[0];
 cx a[0],b[0];
 measure a[0] -> ac[0];
 measure b[0] -> bc[0];
+
+/*
+Entagled of 3 qubits - GHZ
+
+OPENQASM 2.0;
+include "qelib1.inc";
+
+qreg q[3];
+creg c[3];
+
+reset q[0];
+reset q[1];
+h q[0];
+cx q[0],q[1];
+reset q[2];
+cx q[0],q[2];
+measure q[0] -> c[0];
+measure q[1] -> c[1];
+measure q[2] -> c[2];
+*/
