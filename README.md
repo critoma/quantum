@@ -3,6 +3,15 @@ Quantum Computing and PQC - Post Quantum Crypto
 
 This repo contains the resources for the lectures and labs in Quantum Crypto field within ISM - IT | Cybersecurity Master Program - www.ism.ase.ro
 
+# Presentation Quantum & PQC
+https://drive.google.com/file/d/10uutxiZWXoMY4xmXECkRTv6zLZ3C6OAo/view?usp=sharing
+
+# Presentation Blockchain - Bitcoin, Ethereum, XRP, ...
+https://drive.google.com/file/d/1lD0sybjuSujYaNs_AY1sd55yST7ZWymA/view?usp=sharing
+
+# Presentation Java Card - EMVCo, Digital Wallet
+https://drive.google.com/file/d/1V2aFQeEntXUNRq3n2v-4zlDcc9j1h_h0/view?usp=sharing
+
 This repo has modifications for the compilation & run command line (adapted to run with Java OpenJDK 17 and Open JavaFX 17 for MacOS/Linux on both Intel/AMD and ARM CPUs) and some modified samples from the Quantum Java repo - author Johan Vos and Quantum Assembly - Open QASM with references to Qiskit.
 
 # Quantum Java
