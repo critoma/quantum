@@ -90,6 +90,109 @@ deactivate
 
 Note: For better performance with simulators, you may need to install CUDA if you are using an NVIDIA GPU, as described in the qiskit-aer documentation. 
 
+#### Simple Superposition gate H testing ONLY on IBM QC Simulator, not real IBM_Kyiev Quantum Computer 128 qubits:
+# python s01_HGate.py 
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
+# In Qiskit 2.x, we often use BackendSampler from qiskit_ibm_runtime
+# or AerSimulator from qiskit_aer for simulation
+
+# 1. Create a Quantum Circuit with 1 qubit and 1 classical bit
+qc = QuantumCircuit(1, 1)
+# 2. Apply Hadamard gate to put the qubit in superposition
+qc.h(0)
+# 3. Measure the qubit
+qc.measure(0, 0)
+# Visualize the circuit
+print(qc.draw())
+# 4. Simulate the circuit (using AerSimulator)
+from qiskit_aer import AerSimulator
+from qiskit import transpile
+
+simulator = AerSimulator()
+# transpile is for optimization of the circuit in real QC environment or simulation
+compiled_circuit = transpile(qc, simulator) 
+job = simulator.run(compiled_circuit, shots=1000)
+result = job.result()
+counts = result.get_counts()
+
+print("\nMeasurement Results (Superposition):", counts)
+
+(venv) stud@5521e6fab35a:~/qiskit_circuits$ python s01_HGate.py 
+     ┌───┐┌─┐
+  q: ┤ H ├┤M├
+     └───┘└╥┘
+c: 1/══════╩═
+
+# python s01_HGate_fromQasm2.py
+from qiskit import QuantumCircuit
+from qiskit.primitives import StatevectorSampler
+
+# 1. Map: Load from the QASM 2.0 file
+circuit = QuantumCircuit.from_qasm_file("superpositionHGateQASM2.qasm")
+# 2. Visualize: Print the text-based circuit diagram
+print("--- Circuit Diagram ---")
+print(circuit.draw(output='text'))
+# 3. Initialize the local Sampler (No IBM account needed)
+sampler = StatevectorSampler()
+# 3. Execute Locally: Use the SDK reference Sampler
+job = sampler.run([circuit])
+result = job.result()
+# 4. Post-process: Extract measurement counts
+# 4. Post-process: Extract counts from the classical register 'c'
+# Note: In V2 primitives, result indexing follows the PUB structure
+# The key 'c' matches the bit name defined in your QASM file
+pub_result = result[0] 
+counts = pub_result.data.c.get_counts()
+
+print("\n--- Execution Results ---")
+print(f"Counts: {counts}")
+
+# Quantum Assembly version 2 file - superpositionHGateQASM2.qasm:
+OPENQASM 2.0;
+include "qelib1.inc";
+
+qreg q[1];
+creg c[1];
+
+h q[0];
+measure q[0] -> c[0];
+
+# python s01_HGate_fromQasm3.py
+from qiskit import qasm3
+from qiskit.primitives import StatevectorSampler
+
+# 1. Map: Load the circuit from the QASM 3.0 file
+# This converts the textual QASM into a Qiskit QuantumCircuit object
+circuit = qasm3.load("superpositionHGateQASM3.qasm")
+# 2. Visualize: Print the text-based circuit diagram
+print("--- Circuit Diagram ---")
+print(circuit.draw(output='text'))
+# 3. Initialize the local Sampler (No IBM account needed)
+sampler = StatevectorSampler()
+# 3. Execute: Run the circuit locally
+# 3. Execute Locally: Use the SDK reference Sampler
+# The circuit is passed in a list as a "Primitive Unified Bloc" (PUB)
+job = sampler.run([circuit])
+result = job.result()
+# 4. Post-process: Extract measurement counts
+# The key 'c' matches the bit name defined in your QASM file
+pub_result = result[0]
+counts = pub_result.data.c.get_counts()
+
+print(f"Local Superposition Counts: {counts}")
+
+# Quantum Assembly version 3 file - superpositionHGateQASM3.qasm:
+OPENQASM 3.0;
+include "stdgates.inc";
+
+qubit[1] q;
+bit[1] c;
+
+h q[0];
+c[0] = measure q[0];
+
+
 ###################################
 
 
