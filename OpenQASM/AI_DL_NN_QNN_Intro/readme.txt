@@ -53,6 +53,45 @@ pip install scikit-learn
 
 pip3 install qiskit qiskit-ibm-runtime qiskit-qasm3-import qiskit-aer qiskit-algorithms qiskit-machine-learning scikit-learn
 
+###################################
+
+Alternatively instead of https://shell.cloud.google.com/?show=ide%2Cterminal, in Linux container in Podman/Docker:
+To install Qiskit on Linux Ubuntu 24.04, it is highly recommended to use a Python virtual environment to avoid dependency conflicts. The process involves installing Python and pip, creating a virtual environment, activating it, and then using pip install qiskit to install the latest version. 
+IBM Quantum Platform
+
+Ensure your system is up to date:
+sudo apt update
+sudo apt upgrade
+
+Install Python and Venv:
+sudo apt install python3-pip python3-venv
+
+Create a Virtual Environment - create a project folder and a virtual environment inside it:
+mkdir qiskit-env
+cd qiskit-env
+python3 -m venv venv
+
+Activate the Virtual Environment - Your terminal prompt should now show (venv), indicating you are inside the isolated environment.
+source venv/bin/activate
+
+Install Qiskit - Use pip to install the main Qiskit library:
+pip install qiskit
+
+Install Optional Components - If you need visualization tools (such as drawing circuits) or IBM Quantum runtime support, run:
+pip install 'qiskit[visualization]' qiskit-ibm-runtime
+pip install "qiskit[qasm3-import]" qiskit-aer
+pip install samplomatic==0.17.1
+
+Verifying Installation - To verify that Qiskit was installed correctly, you can run:
+python -c "import qiskit; print(qiskit.__version__)"
+
+Deactivating the Environment - When you are done working, you can leave the virtual environment by running: 
+deactivate
+
+Note: For better performance with simulators, you may need to install CUDA if you are using an NVIDIA GPU, as described in the qiskit-aer documentation. 
+
+###################################
+
 
 nano test_bell_01_AerSimu.py
 ####################
