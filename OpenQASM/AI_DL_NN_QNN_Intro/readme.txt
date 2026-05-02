@@ -72,7 +72,8 @@ cd qiskit-env
 python3 -m venv venv
 
 Activate the Virtual Environment - Your terminal prompt should now show (venv), indicating you are inside the isolated environment.
-source venv/bin/activate
+# source venv/bin/activate
+source /opt/software/qiskit-env/venv/bin/activate
 
 Install Qiskit - Use pip to install the main Qiskit library:
 pip install qiskit
